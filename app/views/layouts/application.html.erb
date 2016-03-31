@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html>
+
+  <% if current_user.nil? %>
+    <% user = "you're not logged in" %>
+    <% button = button_to "log in", new_session_url, method: :get %>
+  <% else %>
+    <% user = current_user.username %>
+    <% button = button_to "log out", new_session_url %>
+  <% end %>
+
+<h3> <%= user %> <%= button %> </h3>
+
 <head>
   <title>NinetyNineCatsDay1</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
